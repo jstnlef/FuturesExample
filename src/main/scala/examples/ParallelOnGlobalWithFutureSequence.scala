@@ -8,12 +8,16 @@ import scala.concurrent.Future
   */
 class ParallelOnGlobalWithFutureSequence extends FuturesExample {
   override def runExample(): Future[Unit] = {
-    Future.sequence(Seq(
+    println(s"Running example on Thread ${Thread.currentThread.getName}")
+
+    // Starts the various task futures
+    val slowTasks = Seq(
       slowIOBoundTask("A"),
       slowIOBoundTask("B"),
       slowIOBoundTask("C"),
       slowIOBoundTask("D"),
       slowIOBoundTask("E")
-    )).map(_ => tasksComplete())
+    )
+    Future.sequence(slowTasks).map(_ => tasksComplete())
   }
 }

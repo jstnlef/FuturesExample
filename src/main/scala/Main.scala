@@ -8,7 +8,8 @@ object Main {
   val examplesMap: Map[String, FuturesExample] = Map(
     "ParallelOnGlobalWithFor" -> new ParallelOnGlobalWithFor(),
     "SequentialOnGlobalWithFor" -> new SequentialOnGlobalWithFor(),
-    "ParallelOnGlobalWithFutureSequence" -> new ParallelOnGlobalWithFutureSequence()
+    "ParallelOnGlobalWithFutureSequence" -> new ParallelOnGlobalWithFutureSequence(),
+    "ConcurrentOnSingleThread" -> new ConcurrentOnSingleThread()
   )
 
   def main(args: Array[String]): Unit = {
@@ -30,5 +31,6 @@ object Main {
     }
     val endTime = System.currentTimeMillis
     println(s"Ending main method on Thread ${thread.getName}. Execution took ${endTime - startTime} ms.")
+    System.exit(0)
   }
 }

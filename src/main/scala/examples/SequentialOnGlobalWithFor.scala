@@ -9,6 +9,8 @@ import scala.concurrent.Future
   */
 class SequentialOnGlobalWithFor extends FuturesExample {
   override def runExample(): Future[Unit] = {
+    println(s"Running example on Thread ${Thread.currentThread.getName}")
+
     for {
       _ <- slowIOBoundTask("A")
       _ <- slowIOBoundTask("B")
